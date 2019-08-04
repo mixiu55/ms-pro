@@ -1,0 +1,216 @@
+<template>
+  <div class="top_box">
+    <div class="top_search">
+      <ul class="booking_box clear_both">
+        <li class="booking_item"><a class="place_icon_box" href=""><span class="place_icon iconfont icon-ditu"></span></a><input class="place_txt" type="text" placeholder="目的地"></li>
+        <li class="booking_item"><span class="time_icon iconfont icon-riqi"></span><input type="text" placeholder="选择入住离开时间"></li>
+        <li class="booking_item"><span class="word iconfont icon-icon-pen"></span> <input type="text" placeholder="关键词/景点/标题"></li>
+        <li class="booking_item"><a class="btn_search" href="">搜索&nbsp;&nbsp;&nbsp;&nbsp;<span class="iconfont icon-icon-Search
+            "></span></a></li>
+      </ul>
+    </div>
+    <div class="top_screen">
+      <!-- 位置开始 -->
+      <div class="screen_position">
+        <span class="screen_title">位置</span>
+        <span class="screen_unlimit"><a href="">不限</a></span>
+        <ul class="position_ul clear_both">
+          <li class="pst_item rmtj_li fl">
+              <a class="pst_a" href="">热门推荐<i class="small_arrow"></i></a>
+              <ul class="rmtj_box clear_both">
+                <li class="pst_ul_item">
+                    <a class="radio-flag" href="" title="外滩">外滩</a>
+                </li>
+                <li class="pst_ul_item">
+                    <a class="radio-flag" href="" title="上海迪士尼度假区">上海迪士尼度假区</a>
+                </li>
+                <li class="pst_ul_item">
+                    <a class="radio-flag" href="" title="南京步行街">南京步行街</a>
+                </li>
+                <li class="pst_ul_item">
+                    <a class="radio-flag" href="" title="徐家汇">徐家汇</a>
+                </li>
+                <li class="pst_ul_item">
+                    <a class="radio-flag" href="" title="人民广场">人民广场</a>
+                </li>
+                <li class="pst_ul_item">
+                    <a class="radio-flag" href="" title="静安寺">静安寺</a>
+                </li>
+                <li class="pst_ul_item">
+                    <a class="radio-flag" href="" title="田子坊">田子坊</a>
+                </li>
+                <li class="pst_ul_item">
+                    <a class="radio-flag" href="" title="浦东机场">浦东机场</a>
+                </li>
+                <li class="pst_ul_item">
+                    <a class="radio-flag" href="" title="东方明珠">东方明珠</a>
+                </li>
+                <li class="pst_ul_item">
+                    <a class="radio-flag" href="" title="上海欢乐谷">上海欢乐谷</a>
+                </li>
+              </ul>
+            </li>
+            <li class="pst_item fl">
+              <a class="pst_a" href="">行政区<i class="small_arrow"></i></a>
+            </li>
+            <li class="pst_item fl">
+              <a class="pst_a" href="">商圈<i class="small_arrow"></i></a>
+            </li>
+            <li class="pst_item fl">
+              <a class="pst_a" href="">地铁<i class="small_arrow"></i></a>
+            </li>
+            <li class="pst_item fl">
+              <a class="pst_a" href="">机场/车站<i class="small_arrow"></i></a>
+            </li>
+            <li class="pst_item fl">
+              <a class="pst_a" href="">高校<i class="small_arrow"></i></a>
+            </li>
+        </ul>
+    </div>
+    <!-- 位置结束 -->
+    <!-- 户型开始 -->
+    <div class="screen_h_type">
+        <span class="screen_title">户型</span>
+        <span class="screen_unlimit"><a href="">不限</a></span>
+        <ul class="h_type_ul clear_both">
+          <li class="h_type_item fl">
+            <label>
+              <input class="chb" type="checkbox">一居
+            </label>                        
+          </li>
+          <li class="h_type_item fl">
+            <label>
+              <input class="chb" type="checkbox">两居
+            </label>                        
+          </li>
+          <li class="h_type_item fl">
+            <label>
+              <input class="chb" type="checkbox">三居
+            </label>                        
+          </li>
+          <li class="h_type_item fl">
+            <label>
+              <input class="chb" type="checkbox">四居及以上
+            </label>                        
+          </li>
+        </ul>
+    </div>
+    <!-- 价格开始 -->
+    <div class="screen_price">
+      <span class="screen_title">价格</span>
+      <span class="screen_unlimit"><a href="">不限</a></span>
+      <ul class="price_ul clear_both">
+        <li class="price_item fl">
+          <label>
+            <input class="chb" type="checkbox">￥200以下
+          </label>                        
+        </li>
+        <li class="price_item fl">
+          <label>
+            <input class="chb" type="checkbox">￥200-300
+          </label>                        
+        </li>
+        <li class="price_item fl">
+          <label>
+            <input class="chb" type="checkbox">￥300-400
+          </label>                        
+        </li>
+        <li class="price_item fl">
+          <label>
+            <input class="chb" type="checkbox">￥400-500
+          </label>                        
+        </li>
+        <li class="price_item fl">
+          <label>
+            <input class="chb" type="checkbox">￥500-800
+          </label>                        
+        </li>
+        <li class="price_item fl">
+          <label>
+            <input class="chb" type="checkbox">￥800以上
+          </label>                        
+          </li>
+        </ul>
+    </div>
+    <!-- 配套开始 -->
+    <div class="screen_have">
+        <span class="screen_title">配套</span>
+        <span class="screen_unlimit"><a href="">不限</a></span>
+        <ul class="have_ul clear_both">
+            <li class="have_item fl">
+                <label>
+                    <input class="chb" type="checkbox">电梯
+                </label>
+                </li>
+            <li class="have_item fl"> 
+                <label>                                 
+                    <input class="chb" type="checkbox">WiFi
+                </label>
+            </li>
+            <li class="have_item fl"> 
+                <label>                                 
+                    <input class="chb" type="checkbox">空调
+                </label>
+            </li>
+            <li class="have_item fl"> 
+                <label>                                 
+                    <input class="chb" type="checkbox">电视
+                </label>
+            </li>
+            <li class="have_item fl"> 
+                <label>                                 
+                    <input class="chb" type="checkbox">冰箱
+                </label>
+            </li>
+            <li class="have_item fl"> 
+                <label>                                 
+                    <input class="chb" type="checkbox">微波炉
+                </label>
+            </li>
+            <li class="have_item fl"> 
+                <label>                                 
+                    <input class="chb" type="checkbox">24小时热水
+                </label>
+            </li>
+        </ul>
+    </div>
+    <!-- 特色开始 -->
+    <div class="screen_feature">
+            <span class="screen_title">特色</span>
+            <span class="screen_unlimit"><a href="">不限</a></span>
+            <ul class="feature_ul clear_both">
+                <li class="have_item fl"> 
+                    <label>                                 
+                        <input class="chb" type="checkbox">公寓
+                    </label>
+                </li>
+                <li class="have_item fl"> 
+                    <label>                                 
+                        <input class="chb" type="checkbox">民居
+                    </label>
+                </li>
+                <li class="have_item fl"> 
+                    <label>                                 
+                        <input class="chb" type="checkbox">别墅
+                    </label>
+                </li>
+                <li class="have_item fl"> 
+                    <label>                                 
+                        <input class="chb" type="checkbox">客栈
+                    </label>
+                </li>
+                <li class="have_item fl"> 
+                    <label>                                 
+                        <input class="chb" type="checkbox">四合院
+                    </label>
+                </li>
+                <li class="have_item fl"> 
+                    <label>                                 
+                        <input class="chb" type="checkbox">老洋房
+                    </label>
+                </li>
+            </ul>
+        </div>
+      </div>
+    </div>
+</template>
