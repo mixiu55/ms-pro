@@ -26,17 +26,7 @@ CREATE TABLE yj_house(
   bedsize VARCHAR(64),        #1.8m宽 × 2m长 ×2张
 
   favorite VARCHAR(1024),     #个性描述
-  travel VARCHAR(1024),       #出行信息 
 
-  shelf_time BIGINT,          #上架时间
-  sold_count INT,             #已售出的数量
-  is_onsale BOOLEAN           #是否促销中
-);
-
-/**房间配套**/
-CREATE TABLE yj_house_support(
-  hsid INT PRIMARY KEY AUTO_INCREMENT,
-  house_id INT,
   quilt BOOLEAN,#被子
   lift BOOLEAN,#电梯
   hclear BOOLEAN,#打扫
@@ -46,18 +36,19 @@ CREATE TABLE yj_house_support(
   hot BOOLEAN,#热水
   annihilator BOOLEAN,#灭火器
   intelligent BOOLEAN,#智能锁
-  cooking BOOLEAN     #厨房
-);
+  cooking BOOLEAN,     #厨房
 
-/**入住须知**/
-CREATE TABLE yj_mustknow(
-  mid INT PRIMARY KEY AUTO_INCREMENT,
-  house_id INT,               #房间编号
   mcome VARCHAR(128),            #接待时间
   mleast VARCHAR(128),            #最少入住天数
   mleave VARCHAR(128),         #退房时间
   mmore VARCHAR(128),          #最多入住几人
-  mout VARCHAR(128)            #外宾接待
+  mout VARCHAR(128),            #外宾接待
+
+  travel VARCHAR(1024),       #出行信息 
+
+  shelf_time BIGINT,          #上架时间
+  sold_count INT,             #已售出的数量
+  is_onsale BOOLEAN           #是否促销中
 );
 
 /**房间图片**/
@@ -143,17 +134,12 @@ CREATE TABLE yj_index_carousel(
   href VARCHAR(128)
 );
 
-/****首页商品****/
+/****首页信息****/
 CREATE TABLE yj_index_house(
   pid INT PRIMARY KEY AUTO_INCREMENT,
   title VARCHAR(64),
-  details VARCHAR(128),
   pic VARCHAR(128),
-  price DECIMAL(10,2),
-  href VARCHAR(128),
-  seq_recommended TINYINT,
-  seq_new_arrival TINYINT,
-  seq_top_sale TINYINT
+  href VARCHAR(128)
 );
 
 /*******************/
@@ -175,28 +161,21 @@ INSERT INTO yj_city VALUES
 /**房间**/
 INSERT INTO yj_house VALUES
 (null,1,'【观星居】优乘之家美兰湖别墅单间唯美亲子套房','上海市宝山区抚远路699弄',688,'整套出租',89,'1室0厅0厨1卫','宜住2人','共2张','1.8m宽 × 2m长 ×2张','这大概是向往的生活-意气风发的年纪在烟火气最盛的地方-/-买1个不临街的一居室-*-暖心的装修､舒适干净的床品､想在浴缸里休憩､慵懒的在沙发上看着窗外发呆或者看书､&夜幕降临与三五好友拥入熙熙攘攘的深夜街头｡<br />因为向往这样的处所,所以装饰了这个家,把我想要的都融入其中了,也许你会想来体验一次吗?【户型】我的房子是1室1卫 ,干净整洁,有厨房,有1张双人床可供2人居住,有1个卫生间｡房屋采光非常好,明媚的阳光照射进来非常温暖,让您沐浴阳光,静静的享受着自然日光给您带来的安逸和温暖｡<br />【卧室】卧室有1张1.8米大床采用宜家家居床垫,在一夜安睡后醒来,开始美好的一天!,房间还有北欧 三人座沙发､百兆wifi､网络电视､北欧吧台､椅子......您可以和朋友一起玩游戏､看电影,让这个小家给您带来温馨舒适的感受
-<br />【厨房】开放式厨房,为客人准备了有锅具､碗､盘､筷子､勺子､微波炉､电饭锅､电水壶等用品｡让您体验到家一般的感觉<br />【卫生间】吹风机,滚筒洗衣机(每月至少清洗消毒一次),洗衣液等｡洗发沐浴液､毛巾､浴巾､洗漱用品均按星级酒店标准为您准备齐全,请放心使用,无需自带','咱们的小家就在四号线鲁班路/十三号线世博会博物馆地铁站附近｡到虹桥大约45分钟(地铁),到浦东机场大约1小时(公交)如果您选择自驾出行,您可以将您的爱车停在距离小区大门口边上的停车场,每小时8元 ,封顶大约64元；<br />周边热门：田子坊（约1.4公里）、世博会中国国家馆（约2.2公里）、上海新天地（约2.2公里）<br />附近地铁站：鲁班路（约300米）、世博会博物馆（约400米）<br />机场 / 火车站：虹桥国际机场（约13.7公里）、浦东国际机场（约32.1公里）、上海火车站（约5.7公里）、上海南站（约6.7公里）、虹桥火车站（约14.9公里）<br />房源具体位置将在预订确认后提供',150123456789,968,true);
+<br />【厨房】开放式厨房,为客人准备了有锅具､碗､盘､筷子､勺子､微波炉､电饭锅､电水壶等用品｡让您体验到家一般的感觉<br />【卫生间】吹风机,滚筒洗衣机(每月至少清洗消毒一次),洗衣液等｡洗发沐浴液､毛巾､浴巾､洗漱用品均按星级酒店标准为您准备齐全,请放心使用,无需自带',true,true,true,true,true,true,true,true,true,true,'00:00-24:00','1天','12:00以前','6人','暂不支持','咱们的小家就在四号线鲁班路/十三号线世博会博物馆地铁站附近｡到虹桥大约45分钟(地铁),到浦东机场大约1小时(公交)如果您选择自驾出行,您可以将您的爱车停在距离小区大门口边上的停车场,每小时8元 ,封顶大约64元；<br />周边热门：田子坊（约1.4公里）、世博会中国国家馆（约2.2公里）、上海新天地（约2.2公里）<br />附近地铁站：鲁班路（约300米）、世博会博物馆（约400米）<br />机场 / 火车站：虹桥国际机场（约13.7公里）、浦东国际机场（约32.1公里）、上海火车站（约5.7公里）、上海南站（约6.7公里）、虹桥火车站（约14.9公里）<br />房源具体位置将在预订确认后提供',150123456789,968,true);
 
-/**房间配套**/
-INSERT INTO yj_house_support VALUES
-(NULL,1,true,true,true,true,true,true,true,true,true,true);
-
-/**入住须知**/
-INSERT INTO yj_mustknow VALUES
-(NULL, 1, '00:00-24:00','1天','12:00以前','6人','暂不支持');
 
 /**房间图片**/
 INSERT INTO yj_house_pic VALUES
-(NULL, 1, 'imgs\houseimg\lg\10001-1.jpg','imgs\houseimg\lg\10001-1.jpg'),
-(NULL, 1, 'imgs\houseimg\lg\10001-2.jpg','imgs\houseimg\lg\10001-2.jpg'),
-(NULL, 1, 'imgs\houseimg\lg\10001-3.jpg','imgs\houseimg\lg\10001-3.jpg'),
-(NULL, 1, 'imgs\houseimg\lg\10001-4.jpg','imgs\houseimg\lg\10001-4.jpg'),
-(NULL, 1, 'imgs\houseimg\lg\10001-5.jpg','imgs\houseimg\lg\10001-5.jpg'),
-(NULL, 1, 'imgs\houseimg\lg\10001-6.jpg','imgs\houseimg\lg\10001-6.jpg'),
-(NULL, 1, 'imgs\houseimg\lg\10001-7.jpg','imgs\houseimg\lg\10001-7.jpg'),
-(NULL, 1, 'imgs\houseimg\lg\10001-8.jpg','imgs\houseimg\lg\10001-8.jpg'),
-(NULL, 1, 'imgs\houseimg\lg\10001-9.jpg','imgs\houseimg\lg\10001-9.jpg'),
-(NULL, 1, 'imgs\houseimg\lg\10001-10.jpg','imgs\houseimg\lg\10001-10.jpg');
+(NULL, 1, 'imgs/houseimg/lg/10001-1.jpg','imgs/houseimg/lg/10001-1.jpg'),
+(NULL, 1, 'imgs/houseimg/lg/10001-2.jpg','imgs/houseimg/lg/10001-2.jpg'),
+(NULL, 1, 'imgs/houseimg/lg/10001-3.jpg','imgs/houseimg/lg/10001-3.jpg'),
+(NULL, 1, 'imgs/houseimg/lg/10001-4.jpg','imgs/houseimg/lg/10001-4.jpg'),
+(NULL, 1, 'imgs/houseimg/lg/10001-5.jpg','imgs/houseimg/lg/10001-5.jpg'),
+(NULL, 1, 'imgs/houseimg/lg/10001-6.jpg','imgs/houseimg/lg/10001-6.jpg'),
+(NULL, 1, 'imgs/houseimg/lg/10001-7.jpg','imgs/houseimg/lg/10001-7.jpg'),
+(NULL, 1, 'imgs/houseimg/lg/10001-8.jpg','imgs/houseimg/lg/10001-8.jpg'),
+(NULL, 1, 'imgs/houseimg/lg/10001-9.jpg','imgs/houseimg/lg/10001-9.jpg'),
+(NULL, 1, 'imgs/houseimg/lg/10001-10.jpg','imgs/houseimg/lg/10001-10.jpg');
 
 /**用户信息**/
 INSERT INTO yj_user VALUES
@@ -207,11 +186,20 @@ INSERT INTO yj_user VALUES
 
 /****首页轮播广告商品****/
 INSERT INTO yj_index_carousel VALUES
-(NULL, 'imgs\index\room1.jpg','轮播广告商品1','Detail.html?hid=1'),
-(NULL, 'imgs\index\room2.jpg','轮播广告商品2','Detail.html?hid=1'),
-(NULL, 'imgs\index\room3.jpg','轮播广告商品3','Detail.html?hid=1'),
-(NULL, 'imgs\index\room4.jpg','轮播广告商品4','Detail.html?hid=1');
+(NULL, 'imgs/index/room1.jpg','轮播广告商品1','Detail.html?hid=1'),
+(NULL, 'imgs/index/room2.jpg','轮播广告商品2','Detail.html?hid=1'),
+(NULL, 'imgs/index/room3.jpg','轮播广告商品3','Detail.html?hid=1'),
+(NULL, 'imgs/index/room4.jpg','轮播广告商品4','Detail.html?hid=1');
 
-/****首页商品****/
+/****首页信息****/
 INSERT INTO yj_index_house VALUES
-(NULL, 'Apple MacBook Air系列', '酷睿双核i5处理器|256GB SSD|8GB内存|英特尔HD显卡620含共享显卡内存', 'img/index/study_computer_img1.png', 6988, 'product_details.html?lid=1', 1, 1, 1);
+(NULL, '家居房', 'imgs/index/houses.jpg','Detail.html?cid=1'),
+(NULL, '洋房', 'imgs/index/house.jpg','Detail.html?cid=1'),
+(NULL, '风景房', 'imgs/index/view.jpg','Detail.html?cid=1'),
+(NULL, '客栈', 'imgs/index/inn.jpg','Detail.html?cid=1'),
+(NULL, '别墅', 'imgs/index/villa.jpg','Detail.html?cid=1'),
+(NULL, '公寓', 'imgs/index/apartment.jpg','Detail.html?cid=1'),
+(NULL, '家庭出游', 'imgs/index/family.png','Detail.html?cid=1'),
+(NULL, '新奇出游', 'imgs/index/feature.png','Detail.html?cid=1'),
+(NULL, '优惠长住', 'imgs/index/long.png','Detail.html?cid=1'),
+(NULL, '热情轰趴', 'imgs/index/party.png','Detail.html?cid=1');
