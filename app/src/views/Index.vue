@@ -205,10 +205,17 @@ export default {
     // 创建的时候就去请求
     var url="index";
     this.axios.get(url).then(result=>{
-      var [t1,t2,t3,t4,t5,t6,com2,com3,com4]=result.data;
-      console.log(result.data);
-      console.log(t1.title)
-      console.log(t1.pic)
+      var [t1,t2,t3,t4,t5,t6,com1,com2,com3,com4]=result.data;
+      this.t1=t1;
+      this.t2=t2;
+      this.t3=t3;
+      this.t4=t4;
+      this.t5=t5;
+      this.t6=t6;
+      this.com1=com1;
+      this.com2=com2;
+      this.com3=com3;
+      this.com4=com4;
     })
   },
 };
