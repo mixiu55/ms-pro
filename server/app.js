@@ -11,7 +11,8 @@ const cors=require("cors");
 var app = express();
 app.listen(5050);//部署新浪云，硬性要求必须监听5050端口
 app.use(cors({
-  origin:["http://127.0.0.1:8080","http://localhost:8080"]//不能用*
+  origin:["http://127.0.0.1:8080","http://localhost:8080"],//不能用*
+  credentials:true //请求验证
 }));//从此所有响应，自动带Access-Control-Allow-Origin:http://127.0.0.1:5500
 //万一客户端浏览器地址发生变化，只改这里origin一处即可！
 //使用body-parser中间件
