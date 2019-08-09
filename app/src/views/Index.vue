@@ -78,43 +78,43 @@
       </div>
       <div class="house_type_box clear_both">
         <div class="h_left_part clear_both fl">
-          <div class="fl photo_box houses">
-            <a href>
-              <img :src="`http://127.0.0.1:5050/${t1.pic}`" alt />
+          <div class="fl photo_box houses" @click="goTot(0)">
+            <a href="#">
+              <img :src="t1.pic==undefined?'':`${baseUrl}${t1.pic}`"  alt />
             </a>
             <span class="photo_name" v-text="t1.title"></span>
           </div>
-          <div class="fl photo_box house">
-            <a href>
-              <img src="imgs/index/house.jpg" alt />
+          <div class="fl photo_box house" @click="goTot(1)">
+            <a href="#">
+              <img :src="t2.pic==undefined?'':`${baseUrl}${t2.pic}`"  alt />
             </a>
-            <span class="photo_name">洋房</span>
+            <span class="photo_name" v-text="t2.title"></span>
           </div>
-          <div class="fl photo_box view">
-            <a href>
-              <img src="imgs/index/view.jpg" alt />
+          <div class="fl photo_box view" @click="goTot(2)">
+            <a href="#">
+              <img :src="t3.pic==undefined?'':`${baseUrl}${t3.pic}`"  alt />
             </a>
-            <span class="photo_name">风景房</span>
+            <span class="photo_name" v-text="t3.title"></span>
           </div>
         </div>
         <div class="h_right_part clear_both fr">
-          <div class="fl photo_box inn">
-            <a href>
-              <img src="imgs/index/inn.jpg" alt />
+          <div class="fl photo_box inn" @click="goTot(3)">
+            <a href="#">
+              <img :src="t4.pic==undefined?'':`${baseUrl}${t4.pic}`"  alt />
             </a>
-            <span class="photo_name">客栈</span>
+            <span class="photo_name" v-text="t4.title"></span>
           </div>
-          <div class="fl photo_box villa">
-            <a href>
-              <img src="imgs/index/villa.jpg" alt />
+          <div class="fl photo_box villa" @click="goTot(4)">
+            <a href="#">
+              <img :src="t5.pic==undefined?'':`${baseUrl}${t5.pic}`"  alt />
             </a>
-            <span class="photo_name">别墅</span>
+            <span class="photo_name" v-text="t5.title"></span>
           </div>
-          <div class="fl photo_box apart">
-            <a href>
-              <img src="imgs/index/apartment.jpg" alt />
+          <div class="fl photo_box apart" @click="goTot(5)">
+            <a href="#">
+              <img :src="t6.pic==undefined?'':`${baseUrl}${t6.pic}`"  alt />
             </a>
-            <span class="photo_name">公寓</span>
+            <span class="photo_name" v-text="t6.title"></span>
           </div>
         </div>
       </div>
@@ -124,29 +124,11 @@
         <h1>遇见旅途，特色主题</h1>
       </div>
       <div class="special_title clear_both">
-        <div class="s_img_box fl">
-          <a href>
-            <img src="imgs/index/family.png" alt />
+        <div class="s_img_box fl" v-for="(com,i) of arr" :key="i" @click="goToc(i)">
+          <a href="javascript:;">
+            <img :src="com==undefined?'':`${baseUrl}${com.pic}`" alt />
           </a>
-          <h1>家庭出游</h1>
-        </div>
-        <div class="s_img_box fl">
-          <a href>
-            <img src="imgs/index/feature.png" alt />
-          </a>
-          <h1>新奇出游</h1>
-        </div>
-        <div class="s_img_box fl">
-          <a href>
-            <img src="imgs/index/long.png" alt />
-          </a>
-          <h1>优惠长住</h1>
-        </div>
-        <div class="s_img_box fl">
-          <a href>
-            <img src="imgs/index/party.png" alt />
-          </a>
-          <h1>热情轰趴</h1>
+          <h1 v-text="com.title"></h1>
         </div>
       </div>
       <!-- 特殊主题推荐结束 -->
@@ -188,6 +170,7 @@
 export default {
   data() {
     return {
+      baseUrl:"http://127.0.0.1:5050/",
       value1:"",
       t1:{},
       t2:{},
@@ -195,28 +178,36 @@ export default {
       t4:{},
       t5:{},
       t6:{},
-      com1:{},
-      com2:{},
-      com3:{},
-      com4:{}
+      arr:[],
+      paths:["上海","北京","广州","深圳","上海","深圳"],//标题跳转路径
+      path:["上海","北京","广州","深圳"]//主题路径
 		}
   },
-  created() {
+  created(){
     // 创建的时候就去请求
     var url="index";
     this.axios.get(url).then(result=>{
-      var [t1,t2,t3,t4,t5,t6,com1,com2,com3,com4]=result.data;
+      var [t1,t2,t3,t4,t5,t6]=result.data;
       this.t1=t1;
       this.t2=t2;
       this.t3=t3;
       this.t4=t4;
       this.t5=t5;
       this.t6=t6;
-      this.com1=com1;
-      this.com2=com2;
-      this.com3=com3;
-      this.com4=com4;
+      this.arr=result.data.slice(6);
+      
     })
+  },
+  methods: {
+    // 页面跳转
+    // 1：标题跳转
+    goTot(i){
+      this.$router.push(`house/${this.paths[i]}`);
+    },
+    // 2：主题跳转
+    goToc(n){
+      this.$router.push(`house/${this.path[n]}`);
+    }
   },
 };
 </script>

@@ -9,14 +9,14 @@ const pool=require("../pool")
 router.get("/",(req,res)=>{
   var hid=req.query.hid;
   var output={
-    product:{},
+    house:{},
     pics:[]
   }
   if(hid!==undefined){
     var sql1=`select * from yj_house where hid=?`;
     pool.query(sql1,[hid],(err,result)=>{
       if(err) throw(err);
-      output.product=result[0];
+      output.house=result[0];
       var sql2=`select * from yj_house_pic where house_id=?`
       pool.query(sql2,[hid],(err,result)=>{
         if(err) throw(err);

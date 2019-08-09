@@ -2,11 +2,12 @@
   <div class="detail-page">
     <my-header />
     <section class="clear_both">
+      <!-- 标题 -->
+      <h1 class="title" v-text="house.title"></h1>
       <!-- 导航栏1 -->
       <div class="house_path">
         <a href>首页</a>
-        <a href>上海民宿</a>
-        <a href>房间编号:10001</a>
+        <a href="#" v-text="house.subtitle"></a>
       </div>
       <!-- 导航栏2 -->
       <div class="info_nav_box clear_both">
@@ -35,7 +36,7 @@
         <ul class="info_price fr clear_both">
           <li class="fl">
             ￥
-            <span class="avg_price">689.00</span>
+            <span class="avg_price" v-text="house.price.toFixed(2)"></span>
           </li>
           <li class="fr">每晚</li>
         </ul>
@@ -49,57 +50,12 @@
             <!-- 大图部分开始 -->
             <div class="h_pic_lg fl">
               <!-- 图片部分 -->
-              <ul class="lg_ul">
-                <li class="lg_item clear_both">
-                  <a class="fl clear_both" href>
-                    <img id="bigImg" class="fl" src="imgs/houseimg/lg/10001-1.jpg" alt />
+              <ul class="lg_ul clear_both">
+                <li class="lg_item clear_both" v-for="(p,i) of pics" :key="i">
+                  <a class="fl clear_both" href="#">
+                    <img id="bigImg" class="fl" :src="`${baseUrl}${p.md}`" alt />
                   </a>
                 </li>
-                <!-- <li class="lg_item">
-                <a class="clear_both" href="javascript:;">
-                  <img class="fl" src="imgs/houseimg/lg/10001-2.jpg" alt="">
-                </a>
-              </li>
-              <li class="lg_item">
-                <a class="clear_both" href="javascript:;">
-                  <img class="fl" src="imgs/houseimg/lg/10001-3.jpg" alt="">
-                </a>
-              </li>
-              <li class="lg_item">
-                <a class="clear_both" href="javascript:;">
-                  <img class="fl" src="imgs/houseimg/lg/10001-4.jpg" alt="">
-                </a>
-              </li>
-              <li class="lg_item">
-                <a class="clear_both" href="javascript:;">
-                  <img class="fl" src="imgs/houseimg/lg/10001-5.jpg" alt="">
-                </a>
-              </li>
-              <li class="lg_item">
-                <a class="clear_both" href="javascript:;">
-                  <img class="fl" src="imgs/houseimg/lg/10001-6.jpg" alt="">
-                </a>
-              </li>
-              <li class="lg_item">
-                <a class="clear_both" href="javascript:;">
-                  <img class="fl" src="imgs/houseimg/lg/10001-7.jpg" alt="">
-                </a>
-              </li>
-              <li class="lg_item">
-                <a class="clear_both" href="javascript:;">
-                  <img class="fl" src="imgs/houseimg/lg/10001-8.jpg" alt="">
-                </a>
-              </li>
-              <li class="lg_item">
-                <a class="clear_both" href="javascript:;">
-                  <img class="fl" src="imgs/houseimg/lg/10001-9.jpg" alt="">
-                </a>
-              </li>
-              <li class="lg_item">
-                <a class="clear_both" href="javascript:;">
-                  <img class="fl" src="imgs/houseimg/lg/10001-10.jpg" alt="">
-                </a>
-                </li>-->
               </ul>
               <!-- 前后箭头 -->
               <a class="arrow_prev" href="javascript:;"></a>
@@ -109,83 +65,11 @@
             <!-- 小图部分开始 -->
             <div class="h_pic_sm fr" id="sm_pic_h">
               <ul class="sm_ul" id="sm_ul">
-                <li class="sm_item">
+                <li class="sm_item" v-for="(p,i) of pics" :key="i">
                   <div class="pic_layer"></div>
                   <img
-                    src="imgs/houseimg/lg/10001-2.jpg"
+                    :src="`${baseUrl}${p.sm}`"
                     data-lg="imgs/houseimg/lg/10001-1.jpg"
-                    alt
-                  />
-                </li>
-                <li class="sm_item">
-                  <div class="pic_cure"></div>
-                  <img
-                    src="imgs/houseimg/lg/10001-1.jpg"
-                    data-lg="imgs/houseimg/lg/10001-2.jpg"
-                    alt
-                  />
-                </li>
-                <li class="sm_item">
-                  <div class="pic_layer"></div>
-                  <img
-                    src="imgs/houseimg/lg/10001-3.jpg"
-                    data-lg="imgs/houseimg/lg/10001-3.jpg"
-                    alt
-                  />
-                </li>
-                <li class="sm_item">
-                  <div class="pic_layer"></div>
-                  <img
-                    src="imgs/houseimg/lg/10001-4.jpg"
-                    data-lg="imgs/houseimg/lg/10001-4.jpg"
-                    alt
-                  />
-                </li>
-                <li class="sm_item">
-                  <div class="pic_layer"></div>
-                  <img
-                    src="imgs/houseimg/lg/10001-5.jpg"
-                    data-lg="imgs/houseimg/lg/10001-5.jpg"
-                    alt
-                  />
-                </li>
-                <li class="sm_item">
-                  <div class="pic_layer"></div>
-                  <img
-                    src="imgs/houseimg/lg/10001-6.jpg"
-                    data-lg="imgs/houseimg/lg/10001-6.jpg"
-                    alt
-                  />
-                </li>
-                <li class="sm_item">
-                  <div class="pic_layer"></div>
-                  <img
-                    src="imgs/houseimg/lg/10001-7.jpg"
-                    data-lg="imgs/houseimg/lg/10001-7.jpg"
-                    alt
-                  />
-                </li>
-                <li class="sm_item">
-                  <div class="pic_layer"></div>
-                  <img
-                    src="imgs/houseimg/lg/10001-8.jpg"
-                    data-lg="imgs/houseimg/lg/10001-8.jpg"
-                    alt
-                  />
-                </li>
-                <li class="sm_item">
-                  <div class="pic_layer"></div>
-                  <img
-                    src="imgs/houseimg/lg/10001-9.jpg"
-                    data-lg="imgs/houseimg/lg/10001-9.jpg"
-                    alt
-                  />
-                </li>
-                <li class="sm_item">
-                  <div class="pic_layer"></div>
-                  <img
-                    src="imgs/houseimg/lg/10001-10.jpg"
-                    data-lg="imgs/houseimg/lg/10001-10.jpg"
                     alt
                   />
                 </li>
@@ -199,26 +83,23 @@
           <div class="house_feature">
             <ul class="h_feature_ul clear_both">
               <li class="h_f_item">
-                <h2>
+                <h2 v-text="house.rent">
                   <span class="iconfont icon-zhufangbaozhang"></span>
-                  整套出租
                 </h2>
-                <p>房屋面积：65m²</p>
-                <p>房屋类型：1室0厅0厨1卫</p>
+                <p v-text="`房屋面积：${house.harea}m²`"></p>
+                <p v-text="`房屋类型：${house.htype}`"></p>
               </li>
               <li class="h_f_item">
                 <h2>
-                  <span class="iconfont icon-kongqijinghuaqi"></span>
-                  宜住2人
+                  <span class="iconfont icon-kongqijinghuaqi" v-text="house.peopel"></span>
                 </h2>
                 <p>房客独享整套房屋</p>
               </li>
               <li class="h_f_item">
                 <h2>
-                  <span class="iconfont icon-jiachuangfuwu"></span>
-                  共一张
+                  <span class="iconfont icon-jiachuangfuwu" v-text="house.bednum"></span>
                 </h2>
-                <p>双人床：1.8m宽 × 2m长 ×2张</p>
+                <p v-text="house.bedsize"></p>
               </li>
             </ul>
           </div>
@@ -232,13 +113,7 @@
               </div>
               <div class="info_fr fr">
                 <div class="info_contain">
-                  <p>
-                    这大概是向往的生活-意气风发的年纪在烟火气最盛的地方-/-买1个不临街的一居室-*-暖心的装修､舒适干净的床品､想在浴缸里休憩､慵懒的在沙发上看着窗外发呆或者看书､&夜幕降临与三五好友拥入熙熙攘攘的深夜街头｡
-                    <br />因为向往这样的处所,所以装饰了这个家,把我想要的都融入其中了,也许你会想来体验一次吗?
-                    【户型】我的房子是1室1卫 ,干净整洁,有厨房,有1张双人床可供2人居住,有1个卫生间｡房屋采光非常好,明媚的阳光照射进来非常温暖,让您沐浴阳光,静静的享受着自然日光给您带来的安逸和温暖｡
-                    <br />【卧室】卧室有1张1.8米大床采用宜家家居床垫,在一夜安睡后醒来,开始美好的一天!,房间还有北欧 三人座沙发､百兆wifi､网络电视､北欧吧台､椅子......您可以和朋友一起玩游戏､看电影,让这个小家给您带来温馨舒适的感受
-                    <br />【厨房】开放式厨房,为客人准备了有锅具､碗､盘､筷子､勺子､微波炉､电饭锅､电水壶等用品｡让您体验到家一般的感觉
-                    <br />【卫生间】吹风机,滚筒洗衣机(每月至少清洗消毒一次),洗衣液等｡洗发沐浴液､毛巾､浴巾､洗漱用品均按星级酒店标准为您准备齐全,请放心使用,无需自带
+                  <p v-html="house.favorite">
                   </p>
                 </div>
                 <div class="control_open">
@@ -259,12 +134,7 @@
               </div>
               <div class="info_fr fr">
                 <div class="info_contain">
-                  <p>
-                    咱们的小家就在四号线鲁班路/十三号线世博会博物馆地铁站附近｡到虹桥大约45分钟(地铁),到浦东机场大约1小时(公交)如果您选择自驾出行,您可以将您的爱车停在距离小区大门口边上的停车场,每小时8元 ,封顶大约64元；
-                    <br />周边热门：田子坊（约1.4公里）、世博会中国国家馆（约2.2公里）、上海新天地（约2.2公里）
-                    <br />附近地铁站：鲁班路（约300米）、世博会博物馆（约400米）
-                    <br />机场 / 火车站：虹桥国际机场（约13.7公里）、浦东国际机场（约32.1公里）、上海火车站（约5.7公里）、上海南站（约6.7公里）、虹桥火车站（约14.9公里）
-                    <br />房源具体位置将在预订确认后提供
+                  <p v-html="house.travel">
                   </p>
                 </div>
                 <div class="control_open">
@@ -369,23 +239,23 @@
                   <ul class="must_know clear_both">
                     <li class="know_item">
                       接待时间：
-                      <span class="know_info">00:00-24:00</span>
+                      <span class="know_info" v-text="house.mcome"></span>
                     </li>
                     <li class="know_item">
                       最少入住：
-                      <span class="know_info">1天</span>
+                      <span class="know_info" v-text="house.mleast"></span>
                     </li>
                     <li class="know_item">
                       退房时间：
-                      <span class="know_info">12:00以前</span>
+                      <span class="know_info" v-text="house.mleave"></span>
                     </li>
                     <li class="know_item">
                       最多入住：
-                      <span class="know_info">不限</span>
+                      <span class="know_info" v-text="house.mmore"></span>
                     </li>
                     <li class="know_item">
                       外宾接待：
-                      <span class="know_info">暂不支持</span>
+                      <span class="know_info" v-text="house.mout"></span>
                     </li>
                   </ul>
                 </div>
@@ -528,9 +398,32 @@
 export default {
   data() {
     return {
-      value1: ""
+      baseUrl:"http://127.0.0.1:5050/",
+      value1: "",
+      house:{price:0},
+      pics:[],
     };
-  }
+  },
+  props:["hid"],//SAN:接收参数
+  methods: {
+    load(){
+      if(this.hid){
+        var url="details";
+        this.axios.get(url,{params:{hid:this.hid}}).then(result=>{
+          // console.log(result.data);
+          var {house,pics}=result.data;
+          // console.log(house);
+          // console.log(pics);
+          this.house=house;
+          this.pics=pics;
+          // console.log(`${this.baseUrl}${pics[0].md}`)
+        })
+      }
+    }
+  },
+  created() {
+    this.load()
+  },
 };
 </script>
 <style scoped>
@@ -588,6 +481,16 @@ section {
   width: 1240px;
   margin: 0 auto;
 }
+/* 标题 */
+section>h1:first-child{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 780px;
+  font-weight: normal;
+  font-size: 32px;
+  margin: 15px 0;
+}
 /* 顶部导航 */
 .house_path > a + a::before {
   content: ">";
@@ -636,6 +539,7 @@ section {
 .h_pic_lg {
   width: 735px;
   height: 490px;
+  overflow: hidden;
   position: relative;
 }
 .lg_item img {
@@ -672,6 +576,11 @@ section {
 .h_pic_sm img {
   width: 100%;
 }
+.h_pic_sm>ul>li{
+  max-height: 65px;
+  overflow: hidden;
+  margin:5px 0 ;
+}
 .sm_prev,
 .sm_next {
   position: absolute;
@@ -697,7 +606,7 @@ section {
   width: 96px;
   position: absolute;
   cursor: pointer;
-}
+  }
 .pic_layer {
   height: 64.7px;
   width: 100px;
@@ -715,6 +624,7 @@ section {
   width: 280px;
   box-sizing: border-box;
   padding-left: 50px;
+  height: 64.7px;
 }
 .house_feature .h_f_item:not(:first-child) {
   border-left: 1px solid #ddd;

@@ -5,8 +5,10 @@
       <!-- 导航栏 -->
       <div class="search_nav">
         <a href>遇见首页</a>
-        <h4>上海民宿</h4>
+        <h4 v-text="`${kw}民宿`"></h4>
       </div>
+      <!-- 筛选部分 -->
+      <top-screen/>
       <!-- 排序部分 -->
       <ul class="house_rank clear_both">
         <li class="rank_item fl">
@@ -45,25 +47,28 @@
       <div>
         <ul class="search_room clear_both">
           <!-- 第一个房源 -->
-          <li class="s_room_item">
+          <li class="s_room_item" v-for="(h,i) of hlist" :key="i">
             <div class="room-img">
               <div class="room_img_inner">
-                <img src="imgs/house/sh-apartment10001.jpg" alt />
+                <img :src="`${baseUrl}${h.md}`" alt />
                 <span class="room_like iconfont icon-shoucang" title="收藏"></span>
-                <p class="room_price">￥680</p>
+                <p class="room_price">
+                  ￥
+                  <span v-text="h.price.toFixed(2)"></span>
+                </p>
               </div>
-              <a href class="r_fd_a" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <img src="imgs/house/fd1.jpg_150x150c.jpg" alt />
+              <a href class="r_fd_a" :title="h.title">
+                <img :src="`${baseUrl}${h.md}`" alt />
               </a>
             </div>
             <div class="room_detail">
-              <a href title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节</a>
+              <a href :title="h.title" v-text="h.title"></a>
             </div>
             <div class="room_address">
-              <a href>浦东新区</a>
+              <a href v-text="h.subtitle.slice(0,3)"></a>
               <a href class="r_ads_a iconfont icon-ditu">
                 <div class="r_ads_img">
-                  <img src="imgs/house/staticimage1.png" alt />
+                  <img :src="`${baseUrl}${h.md}`" alt />
                   <i class="rank_br">◆</i>
                   <i class="rank_bg">◆</i>
                 </div>
@@ -71,12 +76,12 @@
             </div>
             <!-- 房源具体描述 -->
             <ul class="room_detail_ul clear_both">
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
+              <li class="fl" :title="h.title">
                 <span>5.0分 超A!·</span>
               </li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">85条点评·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">1居·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">宜住2人</li>
+              <li class="fl" :title="h.title">85条点评·</li>
+              <li class="fl" :title="h.title" v-text="`${h.htype.slice(0,2)}·`"></li>
+              <li class="fl" :title="h.title" v-text="h.peopel"></li>
             </ul>
             <!-- 房源标签 -->
             <dl class="room_flag_dl">
@@ -89,372 +94,41 @@
             </dl>
           </li>
           <!-- 第一结束 -->
-          <!-- 第二房源 -->
-          <li class="s_room_item">
-            <div class="room-img">
-              <div class="room_img_inner">
-                <img src="imgs/house/sh-apartment10001.jpg" alt />
-                <span class="room_like iconfont icon-shoucang" title="收藏"></span>
-                <p class="room_price">￥680</p>
-              </div>
-              <a href class="r_fd_a" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <img src="imgs/house/fd1.jpg_150x150c.jpg" alt />
-              </a>
-            </div>
-            <div class="room_detail">
-              <a href title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节</a>
-            </div>
-            <div class="room_address">
-              <a href>浦东新区</a>
-              <a href class="r_ads_a iconfont icon-ditu">
-                <div class="r_ads_img">
-                  <img src="imgs/house/staticimage1.png" alt />
-                  <i class="rank_br">◆</i>
-                  <i class="rank_bg">◆</i>
-                </div>
-              </a>
-            </div>
-            <!-- 房源具体描述 -->
-            <ul class="room_detail_ul clear_both">
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <span>5.0分 超A!·</span>
-              </li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">85条点评·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">1居·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">宜住2人</li>
-            </ul>
-            <!-- 房源标签 -->
-            <dl class="room_flag_dl">
-              <dd class="fl best_chose" title="优选房屋，服务优质，设施可靠，出行首选">优选</dd>
-              <dd class="fl fast_book" title="下单即有房，无需等待">闪订</dd>
-              <dd class="fl" title="连住多天，可享超值优惠">连住优惠</dd>
-              <dd class="fl" title="实地上门考察，房屋图片、描述、设施真实有效">验真</dd>
-              <dd class="fl" title="摄影师上门拍摄，百分百真实展示房源">实拍</dd>
-              <dd class="fl" title="密码开锁，自助入住和退房，无需等待房东">密码锁</dd>
-            </dl>
-          </li>
-          <!-- 第二结束 -->
-          <!-- 第三房源 -->
-          <li class="s_room_item">
-            <div class="room-img">
-              <div class="room_img_inner">
-                <img src="imgs/house/sh-apartment10001.jpg" alt />
-                <span class="room_like iconfont icon-shoucang" title="收藏"></span>
-                <p class="room_price">￥680</p>
-              </div>
-              <a href class="r_fd_a" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <img src="imgs/house/fd1.jpg_150x150c.jpg" alt />
-              </a>
-            </div>
-            <div class="room_detail">
-              <a href title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节</a>
-            </div>
-            <div class="room_address">
-              <a href>浦东新区</a>
-              <a href class="r_ads_a iconfont icon-ditu">
-                <div class="r_ads_img">
-                  <img src="imgs/house/staticimage1.png" alt />
-                  <i class="rank_br">◆</i>
-                  <i class="rank_bg">◆</i>
-                </div>
-              </a>
-            </div>
-            <!-- 房源具体描述 -->
-            <ul class="room_detail_ul clear_both">
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <span>5.0分 超A!·</span>
-              </li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">85条点评·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">1居·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">宜住2人</li>
-            </ul>
-            <!-- 房源标签 -->
-            <dl class="room_flag_dl">
-              <dd class="fl best_chose" title="优选房屋，服务优质，设施可靠，出行首选">优选</dd>
-              <dd class="fl fast_book" title="下单即有房，无需等待">闪订</dd>
-              <dd class="fl" title="连住多天，可享超值优惠">连住优惠</dd>
-              <dd class="fl" title="实地上门考察，房屋图片、描述、设施真实有效">验真</dd>
-              <dd class="fl" title="摄影师上门拍摄，百分百真实展示房源">实拍</dd>
-              <dd class="fl" title="密码开锁，自助入住和退房，无需等待房东">密码锁</dd>
-            </dl>
-          </li>
-          <!-- 第三结束 -->
-          <!-- 第一个房源 -->
-          <li class="s_room_item">
-            <div class="room-img">
-              <div class="room_img_inner">
-                <img src="imgs/house/sh-apartment10001.jpg" alt />
-                <span class="room_like iconfont icon-shoucang" title="收藏"></span>
-                <p class="room_price">￥680</p>
-              </div>
-              <a href class="r_fd_a" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <img src="imgs/house/fd1.jpg_150x150c.jpg" alt />
-              </a>
-            </div>
-            <div class="room_detail">
-              <a href title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节</a>
-            </div>
-            <div class="room_address">
-              <a href>浦东新区</a>
-              <a href class="r_ads_a iconfont icon-ditu">
-                <div class="r_ads_img">
-                  <img src="imgs/house/staticimage1.png" alt />
-                  <i class="rank_br">◆</i>
-                  <i class="rank_bg">◆</i>
-                </div>
-              </a>
-            </div>
-            <!-- 房源具体描述 -->
-            <ul class="room_detail_ul clear_both">
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <span>5.0分 超A!·</span>
-              </li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">85条点评·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">1居·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">宜住2人</li>
-            </ul>
-            <!-- 房源标签 -->
-            <dl class="room_flag_dl">
-              <dd class="fl best_chose" title="优选房屋，服务优质，设施可靠，出行首选">优选</dd>
-              <dd class="fl fast_book" title="下单即有房，无需等待">闪订</dd>
-              <dd class="fl" title="连住多天，可享超值优惠">连住优惠</dd>
-              <dd class="fl" title="实地上门考察，房屋图片、描述、设施真实有效">验真</dd>
-              <dd class="fl" title="摄影师上门拍摄，百分百真实展示房源">实拍</dd>
-              <dd class="fl" title="密码开锁，自助入住和退房，无需等待房东">密码锁</dd>
-            </dl>
-          </li>
-          <!-- 第一结束 -->
-          <!-- 第二房源 -->
-          <li class="s_room_item">
-            <div class="room-img">
-              <div class="room_img_inner">
-                <img src="imgs/house/sh-apartment10001.jpg" alt />
-                <span class="room_like iconfont icon-shoucang" title="收藏"></span>
-                <p class="room_price">￥680</p>
-              </div>
-              <a href class="r_fd_a" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <img src="imgs/house/fd1.jpg_150x150c.jpg" alt />
-              </a>
-            </div>
-            <div class="room_detail">
-              <a href title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节</a>
-            </div>
-            <div class="room_address">
-              <a href>浦东新区</a>
-              <a href class="r_ads_a iconfont icon-ditu">
-                <div class="r_ads_img">
-                  <img src="imgs/house/staticimage1.png" alt />
-                  <i class="rank_br">◆</i>
-                  <i class="rank_bg">◆</i>
-                </div>
-              </a>
-            </div>
-            <!-- 房源具体描述 -->
-            <ul class="room_detail_ul clear_both">
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <span>5.0分 超A!·</span>
-              </li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">85条点评·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">1居·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">宜住2人</li>
-            </ul>
-            <!-- 房源标签 -->
-            <dl class="room_flag_dl">
-              <dd class="fl best_chose" title="优选房屋，服务优质，设施可靠，出行首选">优选</dd>
-              <dd class="fl fast_book" title="下单即有房，无需等待">闪订</dd>
-              <dd class="fl" title="连住多天，可享超值优惠">连住优惠</dd>
-              <dd class="fl" title="实地上门考察，房屋图片、描述、设施真实有效">验真</dd>
-              <dd class="fl" title="摄影师上门拍摄，百分百真实展示房源">实拍</dd>
-              <dd class="fl" title="密码开锁，自助入住和退房，无需等待房东">密码锁</dd>
-            </dl>
-          </li>
-          <!-- 第二结束 -->
-          <!-- 第三房源 -->
-          <li class="s_room_item">
-            <div class="room-img">
-              <div class="room_img_inner">
-                <img src="imgs/house/sh-apartment10001.jpg" alt />
-                <span class="room_like iconfont icon-shoucang" title="收藏"></span>
-                <p class="room_price">￥680</p>
-              </div>
-              <a href class="r_fd_a" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <img src="imgs/house/fd1.jpg_150x150c.jpg" alt />
-              </a>
-            </div>
-            <div class="room_detail">
-              <a href title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节</a>
-            </div>
-            <div class="room_address">
-              <a href>浦东新区</a>
-              <a href class="r_ads_a iconfont icon-ditu">
-                <div class="r_ads_img">
-                  <img src="imgs/house/staticimage1.png" alt />
-                  <i class="rank_br">◆</i>
-                  <i class="rank_bg">◆</i>
-                </div>
-              </a>
-            </div>
-            <!-- 房源具体描述 -->
-            <ul class="room_detail_ul clear_both">
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <span>5.0分 超A!·</span>
-              </li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">85条点评·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">1居·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">宜住2人</li>
-            </ul>
-            <!-- 房源标签 -->
-            <dl class="room_flag_dl">
-              <dd class="fl best_chose" title="优选房屋，服务优质，设施可靠，出行首选">优选</dd>
-              <dd class="fl fast_book" title="下单即有房，无需等待">闪订</dd>
-              <dd class="fl" title="连住多天，可享超值优惠">连住优惠</dd>
-              <dd class="fl" title="实地上门考察，房屋图片、描述、设施真实有效">验真</dd>
-              <dd class="fl" title="摄影师上门拍摄，百分百真实展示房源">实拍</dd>
-              <dd class="fl" title="密码开锁，自助入住和退房，无需等待房东">密码锁</dd>
-            </dl>
-          </li>
-          <!-- 第三结束 -->
-          <!-- 第一个房源 -->
-          <li class="s_room_item">
-            <div class="room-img">
-              <div class="room_img_inner">
-                <img src="imgs/house/sh-apartment10001.jpg" alt />
-                <span class="room_like iconfont icon-shoucang" title="收藏"></span>
-                <p class="room_price">￥680</p>
-              </div>
-              <a href class="r_fd_a" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <img src="imgs/house/fd1.jpg_150x150c.jpg" alt />
-              </a>
-            </div>
-            <div class="room_detail">
-              <a href title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节</a>
-            </div>
-            <div class="room_address">
-              <a href>浦东新区</a>
-              <a href class="r_ads_a iconfont icon-ditu">
-                <div class="r_ads_img">
-                  <img src="imgs/house/staticimage1.png" alt />
-                  <i class="rank_br">◆</i>
-                  <i class="rank_bg">◆</i>
-                </div>
-              </a>
-            </div>
-            <!-- 房源具体描述 -->
-            <ul class="room_detail_ul clear_both">
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <span>5.0分 超A!·</span>
-              </li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">85条点评·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">1居·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">宜住2人</li>
-            </ul>
-            <!-- 房源标签 -->
-            <dl class="room_flag_dl">
-              <dd class="fl best_chose" title="优选房屋，服务优质，设施可靠，出行首选">优选</dd>
-              <dd class="fl fast_book" title="下单即有房，无需等待">闪订</dd>
-              <dd class="fl" title="连住多天，可享超值优惠">连住优惠</dd>
-              <dd class="fl" title="实地上门考察，房屋图片、描述、设施真实有效">验真</dd>
-              <dd class="fl" title="摄影师上门拍摄，百分百真实展示房源">实拍</dd>
-              <dd class="fl" title="密码开锁，自助入住和退房，无需等待房东">密码锁</dd>
-            </dl>
-          </li>
-          <!-- 第一结束 -->
-          <!-- 第二房源 -->
-          <li class="s_room_item">
-            <div class="room-img">
-              <div class="room_img_inner">
-                <img src="imgs/house/sh-apartment10001.jpg" alt />
-                <span class="room_like iconfont icon-shoucang" title="收藏"></span>
-                <p class="room_price">￥680</p>
-              </div>
-              <a href class="r_fd_a" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <img src="imgs/house/fd1.jpg_150x150c.jpg" alt />
-              </a>
-            </div>
-            <div class="room_detail">
-              <a href title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节</a>
-            </div>
-            <div class="room_address">
-              <a href>浦东新区</a>
-              <a href class="r_ads_a iconfont icon-ditu">
-                <div class="r_ads_img">
-                  <img src="imgs/house/staticimage1.png" alt />
-                  <i class="rank_br">◆</i>
-                  <i class="rank_bg">◆</i>
-                </div>
-              </a>
-            </div>
-            <!-- 房源具体描述 -->
-            <ul class="room_detail_ul clear_both">
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <span>5.0分 超A!·</span>
-              </li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">85条点评·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">1居·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">宜住2人</li>
-            </ul>
-            <!-- 房源标签 -->
-            <dl class="room_flag_dl">
-              <dd class="fl best_chose" title="优选房屋，服务优质，设施可靠，出行首选">优选</dd>
-              <dd class="fl fast_book" title="下单即有房，无需等待">闪订</dd>
-              <dd class="fl" title="连住多天，可享超值优惠">连住优惠</dd>
-              <dd class="fl" title="实地上门考察，房屋图片、描述、设施真实有效">验真</dd>
-              <dd class="fl" title="摄影师上门拍摄，百分百真实展示房源">实拍</dd>
-              <dd class="fl" title="密码开锁，自助入住和退房，无需等待房东">密码锁</dd>
-            </dl>
-          </li>
-          <!-- 第二结束 -->
-          <!-- 第三房源 -->
-          <li class="s_room_item">
-            <div class="room-img">
-              <div class="room_img_inner">
-                <img src="imgs/house/sh-apartment10001.jpg" alt />
-                <span class="room_like iconfont icon-shoucang" title="收藏"></span>
-                <p class="room_price">￥680</p>
-              </div>
-              <a href class="r_fd_a" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <img src="imgs/house/fd1.jpg_150x150c.jpg" alt />
-              </a>
-            </div>
-            <div class="room_detail">
-              <a href title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节</a>
-            </div>
-            <div class="room_address">
-              <a href>浦东新区</a>
-              <a href class="r_ads_a iconfont icon-ditu">
-                <div class="r_ads_img">
-                  <img src="imgs/house/staticimage1.png" alt />
-                  <i class="rank_br">◆</i>
-                  <i class="rank_bg">◆</i>
-                </div>
-              </a>
-            </div>
-            <!-- 房源具体描述 -->
-            <ul class="room_detail_ul clear_both">
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">
-                <span>5.0分 超A!·</span>
-              </li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">85条点评·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">1居·</li>
-              <li class="fl" title="有窗外的百年老树带浴缸和超大投影仪核心地段古董公寓 音乐节">宜住2人</li>
-            </ul>
-            <!-- 房源标签 -->
-            <dl class="room_flag_dl">
-              <dd class="fl best_chose" title="优选房屋，服务优质，设施可靠，出行首选">优选</dd>
-              <dd class="fl fast_book" title="下单即有房，无需等待">闪订</dd>
-              <dd class="fl" title="连住多天，可享超值优惠">连住优惠</dd>
-              <dd class="fl" title="实地上门考察，房屋图片、描述、设施真实有效">验真</dd>
-              <dd class="fl" title="摄影师上门拍摄，百分百真实展示房源">实拍</dd>
-              <dd class="fl" title="密码开锁，自助入住和退房，无需等待房东">密码锁</dd>
-            </dl>
-          </li>
-          <!-- 第三结束 -->
+ 
         </ul>
       </div>
     </div>
     <my-footer/>
   </div>
 </template>
+<script>
+import TopScreen from '../components/TopScreen'
+export default {
+  data(){
+    return{
+      baseUrl:"http://127.0.0.1:5050/",
+      hlist:[],
+    }
+  },
+  components:{"top-screen":TopScreen},
+  props:["kw"],
+  methods: {
+    load(){
+      var url="house"
+      if(this.kw){
+        this.axios.get(url,{params:{kw:this.kw}}).then(res=>{
+          this.hlist=res.data.data;
+          console.log(res.data.data)
+          console.log(this.hlist[0].md)
+        })
+      }
+    }
+  },
+  created() {
+    this.load()
+  },
+}
+</script>
 <style scoped>
 div,
 h4,
@@ -507,6 +181,7 @@ i {
 /* 索引栏 */
 .search_nav {
   font-size: 14px;
+  padding: 5px 0;
 }
 .search_nav > a {
   color: #555;
@@ -525,6 +200,7 @@ i {
 .house_rank {
   font-size: 14px;
   margin-bottom: 15px;
+  padding: 10px 0;
 }
 .rank_item {
   width: 85px;
