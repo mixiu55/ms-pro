@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const index=require("./routes/index");
 const details=require("./routes/details");
 const house=require("./routes/house");
+const user=require("./routes/user")
 const cors=require("cors");
 /*引入路由模块*/
 
@@ -23,5 +24,6 @@ app.use(express.static('public'));
 app.use("/index",index);
 app.use("/house",house);
 app.use("/details",details);
+app.use('/user',user)
 
 

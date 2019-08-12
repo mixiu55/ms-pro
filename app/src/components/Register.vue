@@ -8,7 +8,7 @@
       <span></span>
       <div class="slide"></div>
       <el-row>
-        <el-button type="primary">主要按钮</el-button>
+        <el-button type="primary">立即注册</el-button>
       </el-row>
       <el-checkbox v-model="iAgree">
         我同意
@@ -23,8 +23,9 @@
         <el-button round>微信登录</el-button>
         <el-button round>微博登录</el-button>
       </el-row>
-      <p>已有账号<a href="#">登录&gt;&gt;</a></p>
+      <p>已有账号<a href="javascript:;" @click="open">登录&gt;&gt;</a></p>
     </div>
+    <div class="close el-icon-close" @click="close"></div>
   </div>
 </template>
 <script>
@@ -34,9 +35,20 @@ export default {
       phone: "",
       checkCode: "",
       iAgree:false,
-    };
-  }
-};
+    }
+  },
+  props:{
+    cname:{type:String}
+  },
+  methods: {
+    close(){
+      this.$emit("closeR")
+    },
+    open(){
+      this.$emit("openL")
+    }
+  },
+}
 </script>
 <style scoped>
 a{
@@ -46,6 +58,12 @@ a{
   width: 638px;
   padding: 30px;
   display: flex;
+  position: fixed;
+  z-index: 9999;
+  background: #fff;
+  top: 200px;
+  left: 50%;
+  margin-left: -349px;
 }
 .reg-part .part-left{
   padding-right: 10px;
@@ -77,14 +95,20 @@ a{
 }
 .reg-part .part-right{
   text-align: center;
+  width: 290px;
 }
 .reg-part .part-right .el-button{
   margin-left: 8px;
+  width: 260px;
 }
 .reg-part .part-right p{
   margin-left: 8px;
 }
 .reg-part .part-right p>a{
   color: #2f5fff;
+}
+.reg-part .el-icon-close:hover{
+  color: #2f5fff;
+  cursor: pointer;
 }
 </style>
