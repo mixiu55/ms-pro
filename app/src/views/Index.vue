@@ -4,43 +4,7 @@
     <!-- 上端图片、搜索部分 -->
     <div class="banner_box">
       <!-- 轮播图 -->
-      <div class="banner" id="i_banner">
-        <ul class="banner_ul clear_both" id="i_banner_ul">
-          <li class="banner_item">
-            <a href>
-              <img src="imgs/index/room5.png" alt />
-            </a>
-          </li>
-          <li class="banner_item">
-            <a href>
-              <img src="imgs/index/room6.png" alt />
-            </a>
-          </li>
-          <li class="banner_item">
-            <a href>
-              <img src="imgs/index/room7.png" alt />
-            </a>
-          </li>
-          <li class="banner_item">
-            <a href>
-              <img src="imgs/index/room8.png" alt />
-            </a>
-          </li>
-          <!-- 多出一张为了轮播 -->
-          <li class="banner_item">
-            <a href>
-              <img src="imgs/index/room5.png" alt />
-            </a>
-          </li>
-        </ul>
-      </div>
-      <!-- 前后箭头 -->
-      <span class="arrow_prev" id="i_arw_prev">
-        <a href="javascript:;" class="iconfont icon-icon-arrow-left"></a>
-      </span>
-      <span class="arrow_next" id="i_arw_next">
-        <a href="javascript:;" class="iconfont icon-icon-arrow-right"></a>
-      </span>
+      <my-carl/>
       <!-- 轮播图结束 -->
       <!-- 搜索框 -->
       <div class="search_box">
@@ -167,7 +131,9 @@
   </div>
 </template>
 <script>
+import Carousel from '../components/Carousel'
 export default {
+  components:{"my-carl":Carousel},
   data() {
     return {
       baseUrl:"http://127.0.0.1:5050/",
@@ -297,6 +263,7 @@ a {
   bottom: 100px;
   left: 16%;
   width: 930px;
+  z-index: 2;
 }
 .index-page .el-range-editor.el-input__inner{
 	border: none;

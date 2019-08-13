@@ -23,4 +23,12 @@ router.get("/",(req,res)=>{
   })
 })
 
+router.get("/carousel",(req,res)=>{
+  var sql=`SELECT * FROM yj_index_carousel`;
+  pool.query(sql,[],(err,result)=>{
+    if(err) throw err;
+    res.send(result);
+  })
+})
+
 module.exports=router;

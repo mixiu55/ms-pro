@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Index from './views/Index.vue'
 import Detail from './views/Detail.vue'
 import Register from './components/Register'
+import Car from './components/Carousel'
 
 Vue.use(Router)
 
@@ -30,6 +31,11 @@ export default new Router({
       path:'/register',//YI:传递参数
       name:'register',
       component:Register,
-    }
+    },
+    {
+      path:'/car',
+      name:'car',
+      component:Car,
+    },
   ]
 })

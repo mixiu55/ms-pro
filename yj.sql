@@ -128,7 +128,7 @@ CREATE TABLE yj_order_detail(
 
 /****首页轮播广告商品****/
 CREATE TABLE yj_index_carousel(
-  cid INT PRIMARY KEY AUTO_INCREMENT,
+  carid INT PRIMARY KEY AUTO_INCREMENT,
   img VARCHAR(128),
   title VARCHAR(64),
   href VARCHAR(128)
@@ -353,9 +353,9 @@ INSERT INTO yj_user VALUES
 /****首页轮播广告商品****/
 INSERT INTO yj_index_carousel VALUES
 (NULL, 'imgs/index/room1.jpg','轮播广告商品1','Detail.html?hid=1'),
-(NULL, 'imgs/index/room2.jpg','轮播广告商品2','Detail.html?hid=1'),
-(NULL, 'imgs/index/room3.jpg','轮播广告商品3','Detail.html?hid=1'),
-(NULL, 'imgs/index/room4.jpg','轮播广告商品4','Detail.html?hid=1');
+(NULL, 'imgs/index/room2.jpg','轮播广告商品2','Detail.html?hid=2'),
+(NULL, 'imgs/index/room3.jpg','轮播广告商品3','Detail.html?hid=3'),
+(NULL, 'imgs/index/room4.jpg','轮播广告商品4','Detail.html?hid=4');
 
 /****首页信息****/
 INSERT INTO yj_index_house VALUES
