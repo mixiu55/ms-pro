@@ -94,11 +94,11 @@
             </dl>
           </li>
           <!-- 第一结束 -->
- 
         </ul>
       </div>
     </div>
     <my-footer/>
+    <btm-nav/>
   </div>
 </template>
 <script>

@@ -8,10 +8,12 @@ import 'element-ui/lib/theme-chalk/index.css'
 // 引入全局组件
 import MyHeader from './components/MyHeader.vue'
 import MyFooter from './components/MyFooter.vue'
+import BtmNav from './components/BtmNav'
 
 Vue.use(ElementUI);
 Vue.component("my-header",MyHeader);
 Vue.component("my-footer",MyFooter);
+Vue.component("btm-nav",BtmNav);
 
 //1:引入axios 第三方ajax模块
 import axios from "axios"

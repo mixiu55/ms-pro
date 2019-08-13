@@ -392,6 +392,7 @@
       <!-- 右侧介绍结束 -->
     </section>
     <my-footer />
+    <btm-nav/>
   </div>
 </template>
 <script>

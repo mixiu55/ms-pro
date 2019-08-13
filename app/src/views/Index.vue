@@ -128,6 +128,7 @@
       </ul>
     </section>
     <my-footer />
+    <btm-nav/>
   </div>
 </template>
 <script>
@@ -209,6 +210,9 @@ a {
   content: "";
   display: block;
   clear: both;
+}
+.index-page{
+  position: relative;
 }
 /* 轮播图 */
 .banner_box {
@@ -319,7 +323,7 @@ a {
 /* 主体部分 */
 section {
   width: 1050px;
-  margin: 0 auto;
+  margin: 0 auto
 }
 /* 标题部分 */
 .title {
