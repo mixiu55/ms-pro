@@ -3,9 +3,7 @@
     <div class="part-left">
       <h3>登录遇见账号</h3>
       <el-input placeholder="用户名" prefix-icon="el-icon-user" v-model="uname"></el-input>
-      <span></span>
       <el-input placeholder="密码" prefix-icon="el-icon-lock" v-model="upwd" type="password"></el-input>
-      <span></span>
       <el-row>
         <el-button type="primary" @click="login">立即登录</el-button>
       </el-row>
@@ -27,6 +25,7 @@
   </div>
 </template>
 <script>
+import qs from "qs"
 export default {
   data() {
     return {
@@ -58,15 +57,15 @@ export default {
         return;
       }
       var url="user/login";
-      var obj={uname,upwd};
-      this.axios.post(url,{params:obj}).then(res=>{
-        console.log(res.data)
+      var obj={uname,upwd}
+      this.axios.post(url,qs.stringify(obj)).then(res=>{
+        // console.log(res.data)
         if(res.data.code==-1){
           this.$message.error('用户名或密码错误');
         }else{
          this.$message({
           showClose: true,
-          message: '恭喜你，这是一条成功消息',
+          message: '登录成功',
           type: 'success'
         });
         }

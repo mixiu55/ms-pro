@@ -2,13 +2,11 @@
   <div class="reg-part">
     <div class="part-left">
       <h3>注册遇见账号</h3>
-      <el-input placeholder="手机号" prefix-icon="el-icon-phone" v-model="phone"></el-input>
-      <span></span>
-      <el-input placeholder="密码" prefix-icon="el-icon-phone" v-model="checkCode" type="password"></el-input>
-      <span></span>
+      <el-input placeholder="用户名" prefix-icon="el-icon-user" v-model="uname"></el-input>
+      <el-input placeholder="密码" prefix-icon="el-icon-lock" v-model="upwd"></el-input>
       <div class="slide"></div>
       <el-row>
-        <el-button type="primary">立即注册</el-button>
+        <el-button type="primary" @click="regiester">立即注册</el-button>
       </el-row>
       <el-checkbox v-model="iAgree">
         我同意
@@ -29,12 +27,15 @@
   </div>
 </template>
 <script>
+import qs from 'qs'
 export default {
   data() {
     return {
       phone: "",
       checkCode: "",
       iAgree:false,
+      uname:"",
+      upwd:""
     }
   },
   props:{
@@ -46,6 +47,33 @@ export default {
     },
     open(){
       this.$emit("openL")
+    },
+    regiester(){
+      var uname=this.uname;
+      var upwd=this.upwd;
+      var reg=/[a-z0-9]{3,12}$/i;
+      if(!reg.test(uname)){
+        this.$message.error('用户名格式错误');
+        return;
+      }
+      if(!reg.test(upwd)){
+        this.$message.error('密码格式错误');
+        return;
+      }
+      var url="user/reg";
+      var obj={uname,upwd}
+      this.axios.post(url,qs.stringify(obj)).then(res=>{
+        console.log(res.data)
+        if(res.data.code==-1){
+          this.$message.error('用户名已存在');
+        }else{
+         this.$message({
+          showClose: true,
+          message: '注册成功',
+          type: 'success'
+        });
+        }
+      });
     }
   },
 }
