@@ -20,7 +20,7 @@ import axios from "axios"
 //2:配置axios 基础路径
 axios.defaults.baseURL="http://127.0.0.1:5050/"
 //3:配置axios 保存session信息
-axios.defaults.withCredentials=true
+axios.defaults.withCredentials=true;
 //4:将axios 注册vue 实例中
 //由于axios不支持 use 将实例添加vue原型
 Vue.prototype.axios = axios;

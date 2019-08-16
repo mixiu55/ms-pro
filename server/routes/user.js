@@ -36,7 +36,12 @@ router.post('/login',function(req,res){
 	// console.log(result);
 	//判断数据长度是否大于0
 	if(result.length>0){
-	  res.send({code:1,msg:'login success'});
+    //登录成功
+    // 1：将登录成功的凭据保存在session中
+    req.session.uid=result[0].uid;
+    // console.log(req.session);
+    // 2：将成功消息发送脚手架
+    res.send({code:1,msg:'login success'});
 	}else{
 	  res.send({code:-1,msg:'login error'});
 	}
